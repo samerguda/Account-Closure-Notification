@@ -1,0 +1,80 @@
+<html> </html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .email-content {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            margin-bottom: 20px;
+        }
+        button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button onclick="copyContent('arabic-content')">Copy Arabic Content</button>
+        <button onclick="copyContent('english-content')">Copy English Content</button>
+        <button onclick="sendEmail()">Send Email</button>
+    </div>
+
+    <div class="email-content" id="arabic-content">
+        <h2>الموضوع: تم إغلاق الحساب الذي أرسلت منه</h2>
+        <p>السادة/ فريق دعم بنك كوراكل المحترمين،</p>
+        <p>تحية طيبة وبعد،</p>
+        <p>أود أن أبلغكم بأنني اكتشفت مؤخراً أن التحويل الذي قمت به قد تم من حساب بنكي لدي في بنك الراجحي، وقد تم إغلاق هذا الحساب. البيانات التي قمت بإرسالها إليكم عند طلبها تتعلق بحسابي في بنك الإنماء، والذي لم يتم إرسال الأموال منه.</p>
+        <p>لذا، أود الاستفسار عن إمكانية تحويل الأموال إلى الحساب الذي تم إرسال البيانات الخاصة به (حساب بنك الإنماء)، حيث أن الحساب الأول في بنك الراجحي قد تم إغلاقه.</p>
+        <p>أرجو منكم التفضل بالنظر في هذا الطلب والإفادة بما يمكن القيام به.</p>
+        <p>شاكرين تعاونكم،</p>
+        <p>الاسم: [اسمك]<br>رقم الحساب: [رقم حسابك]<br>رقم الجوال: [رقم جوالك]<br>البريد الإلكتروني: [بريدك الإلكتروني]</p>
+    </div>
+
+    <div class="email-content" id="english-content">
+        <h2>Subject: Account Closure Notification</h2>
+        <p>Dear Coracle Bank Support Team,</p>
+        <p>I hope this message finds you well.</p>
+        <p>I recently discovered that the transfer I made was from my account at Al Rajhi Bank, which has since been closed. The information I sent you when requested pertains to my account at Alinma Bank, from which no funds were transferred.</p>
+        <p>Therefore, I would like to inquire about the possibility of transferring the funds to the account for which I provided the information (Alinma Bank), as the initial account at Al Rajhi Bank, from which the funds were sent, has been closed.</p>
+        <p>I kindly request your assistance in addressing this matter and providing guidance on the next steps.</p>
+        <p>Thank you for your cooperation.</p>
+        <p>Best regards,<br>Samer Guda Nasr Alsadani<br>Reference-ID: bo2323836070as07<br>Phone Number: +966548247897<br>Email: samerguda@gamil.com</p>
+    </div>
+
+    <script>
+        function copyContent(id) {
+            var content = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(content).then(function() {
+                alert('Content copied to clipboard');
+            }, function() {
+                alert('Failed to copy content');
+            });
+        }
+
+        function sendEmail() {
+            var subject = 'Account Closure Notification';
+            var body = document.getElementById('english-content').innerText;
+            window.location.href = 'mailto:customerservice@coraclebank.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        }
+    </script>
+</body>
+</html>
